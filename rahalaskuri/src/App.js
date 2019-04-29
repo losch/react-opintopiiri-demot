@@ -11,7 +11,7 @@ function formatPercentage(number) {
 class Calculator extends React.Component {
 
   state = {
-    amount: 100,
+    amount: "200",
     percentages: ["50", "50"]
   };
 
@@ -108,7 +108,10 @@ class Calculator extends React.Component {
                 {
                   formatMoney(
                     this.state.percentages.length > 0 ?
-                      this.state.percentages.reduce((acc, percentage) => parseFloat(acc) + parseFloat(percentage) * parseFloat(this.state.amount) / 100) :
+                      this.state.percentages.reduce((acc, percentage) =>
+                        parseFloat(acc) + parseFloat(percentage) / 100 * parseFloat(this.state.amount),
+                        0
+                      ) :
                       0
                   )
                 }
